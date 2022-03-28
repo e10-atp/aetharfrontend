@@ -1,6 +1,4 @@
-# MDC-100 Series of Codelabs
+# Frontend UI for aethar
 
-## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Based on an open source tutorial for Flutter on Google Codelabs.
