@@ -14,10 +14,11 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:shrine/supplemental/asymmetric_view.dart';
 import 'model/products_repository.dart';
 import 'model/product.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -31,15 +32,15 @@ class HomePage extends StatelessWidget {
 
     final ThemeData theme = Theme.of(context);
     final NumberFormat formatter = NumberFormat.simpleCurrency(
-        locale: Localizations.localeOf(context).toString()
-    );
+        locale: Localizations.localeOf(context).toString());
     return products.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
         // TODO: Adjust card heights (103)
+        elevation: 0.0,
         child: Column(
           // TODO: Center items on the card (103)
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18 / 11,
@@ -55,19 +56,22 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
                   // TODO: Align labels to the bottom and center (103)
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   // TODO: Change innermost Column (103)
                   children: <Widget>[
                     // TODO: Handle overflowing labels (103)
                     Text(
                       product.name,
-                      style: theme.textTheme.headline6,
+                      style: theme.textTheme.button,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
                     const SizedBox(height: 8.0),
                     Text(
                       formatter.format(product.price),
-                      style: theme.textTheme.subtitle2,
+                      style: theme.textTheme.caption,
                     ),
                   ],
                 ),
@@ -79,85 +83,83 @@ class HomePage extends StatelessWidget {
     }).toList();
   }
 
-List<Card> _buildGridCardsTemp(int count) {
-  List<Card> cards = List.generate(
-    count,
-        (int index) =>
-        Card(
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: 18.0 / 11.0,
-                child: Image.asset('assets/diamond.png'),
+  List<Card> _buildGridCardsTemp(int count) {
+    List<Card> cards = List.generate(
+      count,
+      (int index) => Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 18.0 / 11.0,
+              child: Image.asset('assets/diamond.png'),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Title'),
+                  const SizedBox(height: 8.0),
+                  Text('Secondary Text'),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Title'),
-                    const SizedBox(height: 8.0),
-                    Text('Secondary Text'),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-  );
-  return cards;
-}
+      ),
+    );
+    return cards;
+  }
 
 // TODO: Add a variable for Category (104)
-@override
-Widget build(BuildContext context) {
-  // TODO: Return an AsymmetricView (104)
-  // TODO: Pass Category variable to AsymmetricView (104)
-  return Scaffold(
-    // TODO: Add app bar (102)
-    appBar: AppBar(
-      // TODO: Add buttons and title (102)
-        title: const Text('SHRINE'),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
-        actions: <Widget>[
-          IconButton(
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Return an AsymmetricView (104)
+    // TODO: Pass Category variable to AsymmetricView (104)
+    return Scaffold(
+      // TODO: Add app bar (102)
+      appBar: AppBar(
+          // TODO: Add buttons and title (102)
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          title: const Text('SHRINE'),
+          leading: IconButton(
             icon: const Icon(
-              Icons.search,
-              semanticLabel: 'search',
+              Icons.menu,
+              semanticLabel: 'menu',
             ),
             onPressed: () {
-              print('Search button');
+              print('Menu button');
             },
           ),
-          IconButton(
-            icon: const Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                semanticLabel: 'search',
+              ),
+              onPressed: () {
+                print('Search button');
+              },
             ),
-            onPressed: () {
-              print('Filter button');
-            },
-          )
-        ]),
+            IconButton(
+              icon: const Icon(
+                Icons.tune,
+                semanticLabel: 'filter',
+              ),
+              onPressed: () {
+                print('Filter button');
+              },
+            )
+          ]),
 
-    // TODO: Add a grid view (102)
-    body: GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
-        childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(context)
-    ),
-    // TODO: Set resizeToAvoidBottomInset (101)
-    resizeToAvoidBottomInset: false,
-  );
-}}
+      // TODO: Add a grid view (102)
+      body: AsymmetricView(
+          products: ProductsRepository.loadProducts(Category.all),
+      ),
+      // TODO: Set resizeToAvoidBottomInset (101)
+      //resizeToAvoidBottomInset: false,
+    );
+  }
+}
