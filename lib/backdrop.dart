@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meta/meta.dart';
+import 'package:shrine/auth.dart';
 import 'login.dart';
 import 'model/product.dart';
+import 'auth.dart';
 
 // TODO: Add velocity constant (104)
 const double _kFlingVelocity = 2.0;
@@ -176,6 +178,7 @@ class _BackdropState extends State<Backdrop>
               MaterialPageRoute(
                   builder: (BuildContext context) => const LoginPage()),
             );
+            Auth().signOut();
           },
         ),
       ],

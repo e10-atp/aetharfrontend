@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:shrine/colors.dart';
 import 'package:shrine/signup.dart';
 import 'package:shrine/welcome.dart';
+import 'auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -31,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
   final _unfocusedColor = Colors.grey[600];
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
+
 
   @override
   void initState() {
@@ -103,11 +105,8 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(height: 32.0),
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextFormField widgets (101)
-            TextFormField(
+
+            TextField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'username',
@@ -121,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
             //spacer
             const SizedBox(height: 12.0),
             // [Password]
-            TextFormField(
+            TextField(
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
@@ -177,7 +176,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    validate();
+                    String email = _usernameController.text;
+                    String password = _passwordController.text;
+                    Auth().login(email, password);
                     Navigator.pop(context);
                     _usernameController.clear();
                     _passwordController.clear();

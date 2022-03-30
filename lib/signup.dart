@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:shrine/auth.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -133,7 +134,9 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                   onPressed: () {
-                    // TODO: Show the next page (101)
+                    String email = _usernameController.text;
+                    String password = _passwordController.text;
+                    Auth().signUp(email, password);
                     _usernameController.clear();
                     _passwordController.clear();
                     Navigator.pop(context);

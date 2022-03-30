@@ -4,6 +4,7 @@ class Auth {
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
+
   void login(String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
