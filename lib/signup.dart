@@ -68,9 +68,9 @@ class _SignupPageState extends State<SignupPage> {
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextField widgets (101)
+            // TODO: Add TextFormField widgets (101)
             // [Name]
-            TextField(
+            TextFormField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'username',
@@ -84,8 +84,9 @@ class _SignupPageState extends State<SignupPage> {
             //spacer
             const SizedBox(height: 12.0),
             // [Password]
-            TextField(
+            TextFormField(
               controller: _passwordController,
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: 'password',
                 labelStyle: TextStyle(

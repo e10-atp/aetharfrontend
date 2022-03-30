@@ -47,6 +47,8 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  void validate() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +60,10 @@ class _LoginPageState extends State<LoginPage> {
             Align(
               alignment: Alignment.centerLeft,
               child: TextButton(
-                child: const Text('about', style: TextStyle(color: aePurple300),),
+                child: const Text(
+                  'about',
+                  style: TextStyle(color: aePurple300),
+                ),
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(
                     Theme.of(context).colorScheme.secondary,
@@ -70,7 +75,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-
                 onPressed: () {
                   _usernameController.clear();
                   _passwordController.clear();
@@ -102,9 +106,8 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextField widgets (101)
-            // [Name]
-            TextField(
+            // TODO: Add TextFormField widgets (101)
+            TextFormField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'username',
@@ -118,8 +121,9 @@ class _LoginPageState extends State<LoginPage> {
             //spacer
             const SizedBox(height: 12.0),
             // [Password]
-            TextField(
+            TextFormField(
               controller: _passwordController,
+              obscureText: true,
               decoration: InputDecoration(
                 labelText: 'password',
                 labelStyle: TextStyle(
@@ -173,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    // TODO: Show the next page (101)
+                    validate();
                     Navigator.pop(context);
                     _usernameController.clear();
                     _passwordController.clear();
