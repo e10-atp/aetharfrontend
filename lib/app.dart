@@ -98,8 +98,6 @@ ThemeData _buildShrineTheme() {
       textSelectionTheme: const TextSelectionThemeData(
         selectionColor: aePurple100,
       ),
-      // TODO: Add the icon themes (103)
-      // TODO: Decorate the inputs (103)
       inputDecorationTheme: const InputDecorationTheme(
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -111,7 +109,6 @@ ThemeData _buildShrineTheme() {
       ));
 }
 
-// TODO: Build a Shrine Text Theme (103)
 TextTheme _buildShrineTextTheme(TextTheme base) {
   return base
       .copyWith(

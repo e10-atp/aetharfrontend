@@ -34,6 +34,8 @@ flutter:
 
   uses-material-design: true
   assets:
+    - assets/text/about.txt
+    - assets/demo.jpg
     - assets/cube.png
     - assets/Category.friends/
     - assets/Category.rooms/
