@@ -156,9 +156,6 @@ class _BackdropState extends State<Backdrop>
       systemOverlayStyle: SystemUiOverlayStyle.light,
       elevation: 0.0,
       titleSpacing: 0.0,
-      // TODO: Replace leading menu icon with IconButton (104)
-      // TODO: Remove leading property (104)
-      // TODO: Create title with _BackdropTitle parameter (104)
       title: _BackdropTitle(
         listenable: _controller.view,
         onPress: _toggleBackdropLayerVisibility,
@@ -169,15 +166,15 @@ class _BackdropState extends State<Backdrop>
         // TODO: Add shortcut to login screen from trailing icons (104)
         IconButton(
           icon: Icon(
-            Icons.search,
-            semanticLabel: 'login',
+            Icons.logout,
+            semanticLabel: 'logout',
           ),
           onPressed: () {
             // TODO: Add open login (104)
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => LoginPage()),
+                  builder: (BuildContext context) => const LoginPage()),
             );
           },
         ),
@@ -226,14 +223,15 @@ class _BackdropTitle extends AnimatedWidget {
             icon: Stack(children: <Widget>[
               Opacity(
                 opacity: animation.value,
-                child: const ImageIcon(AssetImage('assets/slanted_menu.png')),
+                child: const Icon(Icons.menu),
               ),
               FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
                   end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
-                child: const ImageIcon(AssetImage('assets/cube.png')),
+                child: //const ImageIcon(AssetImage('assets/cube.png'))
+                const Icon(Icons.square_outlined),// ,
               )]),
           ),
         ),

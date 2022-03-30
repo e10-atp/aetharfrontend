@@ -23,15 +23,15 @@ import 'category_menu_page.dart';
 
 
 // TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatefulWidget {
-  const ShrineApp({Key? key}) : super(key: key);
+class AETHARApp extends StatefulWidget {
+  const AETHARApp({Key? key}) : super(key: key);
 
   @override
-  State<ShrineApp> createState() => _ShrineAppState();
+  State<AETHARApp> createState() => _AETHARAppState();
 }
 
-class _ShrineAppState extends State<ShrineApp> {
-  Category _currentCategory = Category.all;
+class _AETHARAppState extends State<AETHARApp> {
+  Category _currentCategory = Category.friends;
 
   void _onCategoryTap(Category category) {
     setState(() {
@@ -54,8 +54,8 @@ class _ShrineAppState extends State<ShrineApp> {
           currentCategory: _currentCategory,
           onCategoryTap: _onCategoryTap,
         ),
-        frontTitle: Text('æthar'),
-        backTitle: Text('MENU'),
+        frontTitle: const Text('æthar'),
+        backTitle: const Text('menu'),
       ),
       // TODO: Make currentCategory field take _currentCategory (104)
       // TODO: Pass _currentCategory for frontLayer (104)
@@ -87,16 +87,16 @@ ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
       colorScheme: base.colorScheme.copyWith(
-        primary: kShrinePink100,
-        onPrimary: kShrineBrown900,
-        secondary: kShrineBrown900,
-        error: kShrineErrorRed,
+        primary: aePurple100,
+        onPrimary: aeBlack900,
+        secondary: aeBlack900,
+        error: aeErrorRed,
       ),
-      scaffoldBackgroundColor: kShrineSurfaceWhite,
+      scaffoldBackgroundColor: aeSurfaceWhite,
       // TODO: Add the text themes (103)
       textTheme: _buildShrineTextTheme(base.textTheme),
       textSelectionTheme: const TextSelectionThemeData(
-        selectionColor: kShrinePink100,
+        selectionColor: aePurple100,
       ),
       // TODO: Add the icon themes (103)
       // TODO: Decorate the inputs (103)
@@ -104,7 +104,7 @@ ThemeData _buildShrineTheme() {
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 2.0,
-            color: kShrineBrown900,
+            color: aeBlack900,
           ),
         ),
         border: CutCornersBorder(),
@@ -131,8 +131,8 @@ TextTheme _buildShrineTextTheme(TextTheme base) {
         ),
       )
       .apply(
-        fontFamily: 'Rubik',
-        displayColor: kShrineBrown900,
-        bodyColor: kShrineBrown900,
+        fontFamily: 'Poppins',
+        displayColor: aeBlack900,
+        bodyColor: aeBlack900,
       );
 }

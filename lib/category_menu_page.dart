@@ -18,7 +18,7 @@ class CategoryMenuPage extends StatelessWidget {
 
   Widget _buildCategory(Category category, BuildContext context) {
     final categoryString =
-    category.toString().replaceAll('Category.', '').toUpperCase();
+    category.toString().replaceAll('Category.', '').toLowerCase();
     final ThemeData theme = Theme.of(context);
 
     return GestureDetector(
@@ -36,7 +36,7 @@ class CategoryMenuPage extends StatelessWidget {
           Container(
             width: 70.0,
             height: 2.0,
-            color: kShrinePink400,
+            color: aePurple400,
           ),
         ],
       )
@@ -45,7 +45,7 @@ class CategoryMenuPage extends StatelessWidget {
         child: Text(
           categoryString,
           style: theme.textTheme.bodyText1!.copyWith(
-              color: kShrineBrown900.withAlpha(153)
+              color: aeBlack900.withAlpha(153)
           ),
           textAlign: TextAlign.center,
         ),
@@ -58,7 +58,7 @@ class CategoryMenuPage extends StatelessWidget {
     return Center(
       child: Container(
         padding: const EdgeInsets.only(top: 40.0),
-        color: kShrinePink100,
+        color: aePurple100,
         child: ListView(
             children: _categories
                 .map((Category c) => _buildCategory(c, context))

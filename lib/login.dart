@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Username',
+                labelText: 'username',
                 labelStyle: TextStyle(
                     color: _usernameFocusNode.hasFocus
                         ? Theme.of(context).colorScheme.secondary
@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
-                labelText: 'Password',
+                labelText: 'password',
                 labelStyle: TextStyle(
                     color: _usernameFocusNode.hasFocus
                         ? Theme.of(context).colorScheme.secondary
@@ -102,13 +102,13 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // TODO: Add buttons (101)
                 TextButton(
-                  child: const Text('SIGN UP'),
+                  child: const Text('cancel'),
                   style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(
                       Theme.of(context).colorScheme.secondary,
                     ),
                     shape: MaterialStateProperty.all(
-                      const RoundedRectangleBorder(
+                      const BeveledRectangleBorder(
                         //side: BorderSide.none,
                         borderRadius: BorderRadius.all(Radius.circular(7.0)),
                       ),
@@ -123,11 +123,11 @@ class _LoginPageState extends State<LoginPage> {
                 // TODO: Add an elevation to NEXT (103)
                 // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
-                  child: const Text('LOGIN'),
+                  child: const Text('login'),
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(8.0),
                     shape: MaterialStateProperty.all(
-                      const RoundedRectangleBorder(
+                      const BeveledRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(7.0))),
                     ),
                   ),
