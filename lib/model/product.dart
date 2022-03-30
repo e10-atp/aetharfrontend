@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-enum Category { all, accessories, clothing, home, }
+enum Category { all, friends, rooms, market, }
 
 class Product {
   const Product({
@@ -20,17 +20,15 @@ class Product {
     required this.id,
     required this.isFeatured,
     required this.name,
-    required this.price,
   });
 
   final Category category;
   final int id;
   final bool isFeatured;
   final String name;
-  final int price;
 
-  String get assetName => '$id-0.jpg';
-  String get assetPackage => 'shrine_images';
+  String get assetName => 'assets/$category/$id.jpg';
+  //String get assetPackage => 'shrine_images';
 
   @override
   String toString() => "$name (id=$id)";

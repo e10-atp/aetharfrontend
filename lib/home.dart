@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
               aspectRatio: 18 / 11,
               child: Image.asset(
                 product.assetName,
-                package: product.assetPackage,
+                //package: product.assetPackage,
                 // TODO: Adjust the box size (102)
                 fit: BoxFit.fitWidth,
               ),
@@ -68,11 +68,6 @@ class HomePage extends StatelessWidget {
                       softWrap: false,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                    ),
-                    const SizedBox(height: 8.0),
-                    Text(
-                      formatter.format(product.price),
-                      style: theme.textTheme.caption,
                     ),
                   ],
                 ),

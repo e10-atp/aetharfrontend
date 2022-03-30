@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
 
     final imageWidget = Image.asset(
       product.assetName,
-      package: product.assetPackage,
+      //package: product.assetPackage,
       fit: BoxFit.cover,
     );
 
@@ -61,11 +61,6 @@ class ProductCard extends StatelessWidget {
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
-              ),
-              const SizedBox(height: 4.0),
-              Text(
-                formatter.format(product.price),
-                style: theme.textTheme.subtitle2,
               ),
             ],
           ),

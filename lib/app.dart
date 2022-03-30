@@ -42,7 +42,7 @@ class _ShrineAppState extends State<ShrineApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shrine',
+      title: 'æthar',
       // TODO: Change home: to a Backdrop with a HomePage frontLayer (104)
       home: Backdrop(
         // TODO: Make currentCategory field take _currentCategory (104)
@@ -54,7 +54,7 @@ class _ShrineAppState extends State<ShrineApp> {
           currentCategory: _currentCategory,
           onCategoryTap: _onCategoryTap,
         ),
-        frontTitle: Text('SHRINE'),
+        frontTitle: Text('æthar'),
         backTitle: Text('MENU'),
       ),
       // TODO: Make currentCategory field take _currentCategory (104)
