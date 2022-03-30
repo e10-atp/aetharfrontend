@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 import 'colors.dart';
 import 'model/product.dart';
+//import 'model/things.dart';
 
 class CategoryMenuPage extends StatelessWidget {
   final Category currentCategory;

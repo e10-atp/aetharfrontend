@@ -54,15 +54,18 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
-                const SizedBox(height: 16.0),
+                Transform.scale(
+                  scale: 0.5,
+                  child: Image.asset('assets/cube.png'),
+                ),
+                //const SizedBox(height: 16.0),
                 Text(
-                  'SHRINE',
+                  'æthar',
                   style: Theme.of(context).textTheme.headline5,
                 ),
               ],
             ),
-            const SizedBox(height: 120.0),
+            const SizedBox(height: 32.0),
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
@@ -99,13 +102,14 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // TODO: Add buttons (101)
                 TextButton(
-                  child: const Text('CANCEL'),
+                  child: const Text('SIGN UP'),
                   style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(
                       Theme.of(context).colorScheme.secondary,
                     ),
                     shape: MaterialStateProperty.all(
-                      const BeveledRectangleBorder(
+                      const RoundedRectangleBorder(
+                        //side: BorderSide.none,
                         borderRadius: BorderRadius.all(Radius.circular(7.0)),
                       ),
                     ),
@@ -119,13 +123,12 @@ class _LoginPageState extends State<LoginPage> {
                 // TODO: Add an elevation to NEXT (103)
                 // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
-                  child: const Text('NEXT'),
+                  child: const Text('LOGIN'),
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.all(8.0),
                     shape: MaterialStateProperty.all(
-                      const BeveledRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(7.0))
-                      ),
+                      const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(7.0))),
                     ),
                   ),
                   onPressed: () {
