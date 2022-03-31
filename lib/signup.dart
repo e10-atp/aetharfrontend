@@ -138,7 +138,6 @@ class _SignupPageState extends State<SignupPage> {
                     String email = _usernameController.text;
                     String password = _passwordController.text;
                     signUp(email, password);
-
                   },
                 ),
               ],

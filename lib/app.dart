@@ -21,7 +21,6 @@ import 'backdrop.dart';
 import 'model/product.dart';
 import 'category_menu_page.dart';
 
-
 // TODO: Convert ShrineApp to stateful widget (104)
 class AETHARApp extends StatefulWidget {
   const AETHARApp({Key? key}) : super(key: key);
@@ -48,7 +47,9 @@ class _AETHARAppState extends State<AETHARApp> {
         // TODO: Make currentCategory field take _currentCategory (104)
         currentCategory: _currentCategory,
         // TODO: Pass _currentCategory for frontLayer (104)
-        frontLayer: HomePage(category: _currentCategory,),
+        frontLayer: HomePage(
+          category: _currentCategory,
+        ),
         // TODO: Change backLayer field value to CategoryMenuPage (104)
         backLayer: CategoryMenuPage(
           currentCategory: _currentCategory,
