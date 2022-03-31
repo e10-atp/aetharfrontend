@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:shrine/colors.dart';
+import 'package:shrine/home.dart';
 import 'package:shrine/signup.dart';
 import 'package:shrine/welcome.dart';
-import 'auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -32,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
   final _unfocusedColor = Colors.grey[600];
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
-
 
   @override
   void initState() {
@@ -178,10 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     String email = _usernameController.text;
                     String password = _passwordController.text;
-                    Auth().login(email, password);
-                    Navigator.pop(context);
-                    _usernameController.clear();
-                    _passwordController.clear();
+                    login(email, password);
                   },
                 ),
               ],
@@ -190,6 +189,20 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void login(String email, String password) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
   }
 }
 

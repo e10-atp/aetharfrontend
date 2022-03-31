@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
-
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  User? user = FirebaseAuth.instance.currentUser;
 
   void login(String email, String password) async {
     try {
@@ -35,5 +34,21 @@ class Auth {
 
   void signOut() async {
     await FirebaseAuth.instance.signOut();
+  }
+
+  bool isLoggedIn() {
+    bool result = false;
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+        result = false;
+      } else {
+        print('User is signed in!');
+        result = true;
+      }
+    });
+    return result;
   }
 }
