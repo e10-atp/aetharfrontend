@@ -63,7 +63,7 @@ class _FrontLayer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => ARTest()));
+                      builder: (BuildContext context) => SimpleScreen()));
             },
             child: const Icon(Icons.architecture,),
           ),
