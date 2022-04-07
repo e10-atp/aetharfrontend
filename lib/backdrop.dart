@@ -5,6 +5,7 @@ import 'login.dart';
 import 'model/product.dart';
 import 'auth.dart';
 import 'artest.dart';
+import 'colors.dart';
 
 const double _kFlingVelocity = 2.0;
 
@@ -39,37 +40,40 @@ class _FrontLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      elevation: 16.0,
-      shape: const BeveledRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(46.0)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: onTap,
-            child: Container(
-              height: 40.0,
-              alignment: AlignmentDirectional.centerStart,
+    return Scaffold(
+      body: Material(
+        elevation: 0.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: onTap,
+              child: Container(
+                height: 30.0,
+                alignment: AlignmentDirectional.centerStart,
+              ),
             ),
-          ),
-          Expanded(
-            child: child,
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => SimpleScreen()));
-            },
-            child: const Icon(Icons.architecture,),
-          ),
-        ],
+            Expanded(
+              child: child,
+            ),
+          ],
+        ),
       ),
-    );
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => SimpleScreen()));
+        },
+        backgroundColor: aePurple100,
+        child: const Icon(
+          Icons.architecture,
+          color: aeBlack900,
+        ),
+      ),
+    ) ;
   }
 }
 
