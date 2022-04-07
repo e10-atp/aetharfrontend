@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meta/meta.dart';
-import 'package:shrine/auth.dart';
+import 'package:aethar/auth.dart';
 import 'login.dart';
 import 'model/product.dart';
 import 'auth.dart';
+import 'artest.dart';
 
-// TODO: Add velocity constant (104)
 const double _kFlingVelocity = 2.0;
 
 class Backdrop extends StatefulWidget {
@@ -29,9 +28,7 @@ class Backdrop extends StatefulWidget {
   _BackdropState createState() => _BackdropState();
 }
 
-// TODO: Add _FrontLayer class (104)
 class _FrontLayer extends StatelessWidget {
-  // TODO: Add on-tap callback (104)
   const _FrontLayer({
     Key? key,
     this.onTap,
@@ -50,7 +47,6 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // TODO: Add a GestureDetector (104)
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
@@ -77,8 +73,6 @@ class _FrontLayer extends StatelessWidget {
   }
 }
 
-// TODO: Add _BackdropTitle class (104)
-// TODO: Add _BackdropState class (104)
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
@@ -94,7 +88,6 @@ class _BackdropState extends State<Backdrop>
     }
   }
 
-// TODO: Add AnimationController widget (104)
   late AnimationController _controller;
 
   @override
@@ -111,11 +104,8 @@ class _BackdropState extends State<Backdrop>
       _controller.dispose();
       super.dispose();
     }
-
-// TODO: Add functions to get and change front layer visibility (104)
   }
 
-// TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   bool get _frontLayerVisible {
     final AnimationStatus status = _controller.status;
     return status == AnimationStatus.completed ||
@@ -127,7 +117,6 @@ class _BackdropState extends State<Backdrop>
         velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
-  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 48.0;
     final Size layerSize = constraints.biggest;
@@ -194,7 +183,6 @@ class _BackdropState extends State<Backdrop>
     );
     return Scaffold(
       appBar: appBar,
-      // TODO: Return a LayoutBuilder widget (104)
       body: LayoutBuilder(builder: _buildStack),
     );
   }
@@ -212,7 +200,7 @@ class _BackdropTitle extends AnimatedWidget {
     required this.onPress,
     required this.frontTitle,
     required this.backTitle,
-  }) : _listenable = listenable,
+  })  : _listenable = listenable,
         super(key: key, listenable: listenable);
 
   final Animation<double> _listenable;
@@ -243,8 +231,9 @@ class _BackdropTitle extends AnimatedWidget {
                   end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
                 child: //const ImageIcon(AssetImage('assets/cube.png'))
-                const Icon(Icons.square_outlined),// ,
-              )]),
+                    const Icon(Icons.square_outlined), // ,
+              )
+            ]),
           ),
         ),
         // Here, we do a custom cross fade between backTitle and frontTitle.
@@ -283,4 +272,3 @@ class _BackdropTitle extends AnimatedWidget {
     );
   }
 }
-
