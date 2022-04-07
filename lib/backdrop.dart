@@ -62,6 +62,15 @@ class _FrontLayer extends StatelessWidget {
           Expanded(
             child: child,
           ),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => ARTest()));
+            },
+            child: const Icon(Icons.architecture,),
+          ),
         ],
       ),
     );

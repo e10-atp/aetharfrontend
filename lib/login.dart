@@ -1,24 +1,9 @@
-// Copyright 2018-present the Flutter authors. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:shrine/colors.dart';
-import 'package:shrine/home.dart';
-import 'package:shrine/signup.dart';
-import 'package:shrine/welcome.dart';
+import 'package:aethar/colors.dart';
+import 'package:aethar/signup.dart';
+import 'package:aethar/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
@@ -134,8 +119,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               focusNode: _passwordFocusNode,
             ),
-
-            // TODO: Add button bar (101)
             ButtonBar(
               // TODO: Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
@@ -166,8 +149,6 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                 ),
-                // TODO: Add an elevation to NEXT (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
                   child: const Text('login'),
                   style: ButtonStyle(
@@ -177,10 +158,15 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(7.0))),
                     ),
                   ),
+                  // onPressed: () {
+                  //   String email = _usernameController.text;
+                  //   String password = _passwordController.text;
+                  //   login(email, password);
+                  // },
                   onPressed: () {
-                    String email = _usernameController.text;
-                    String password = _passwordController.text;
-                    login(email, password);
+                    _usernameController.clear();
+                    _passwordController.clear();
+                    Navigator.pop(context);
                   },
                 ),
               ],
@@ -205,5 +191,3 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
-
-// TODO: Add AccentColorOverride (103)
