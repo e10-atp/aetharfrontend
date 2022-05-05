@@ -12,11 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:shrine/supplemental/asymmetric_view.dart';
+import 'package:aethar/supplemental/asymmetric_view.dart';
 import 'model/products_repository.dart';
 import 'model/product.dart';
 
@@ -37,18 +35,14 @@ class HomePage extends StatelessWidget {
     return products.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        // TODO: Adjust card heights (103)
         elevation: 0.0,
         child: Column(
-          // TODO: Center items on the card (103)
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18 / 11,
               child: Image.asset(
                 product.assetName,
-                //package: product.assetPackage,
-                // TODO: Adjust the box size (102)
                 fit: BoxFit.fitWidth,
               ),
             ),
@@ -56,12 +50,9 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
-                  // TODO: Align labels to the bottom and center (103)
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  // TODO: Change innermost Column (103)
                   children: <Widget>[
-                    // TODO: Handle overflowing labels (103)
                     Text(
                       product.name,
                       style: theme.textTheme.button,
@@ -95,9 +86,9 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: const <Widget>[
                   Text('Title'),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8.0),
                   Text('Secondary Text'),
                 ],
               ),

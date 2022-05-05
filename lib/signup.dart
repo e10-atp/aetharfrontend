@@ -13,8 +13,9 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:shrine/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'database.dart';
+import 'model/global.dart' as global;
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -35,12 +36,10 @@ class _SignupPageState extends State<SignupPage> {
     super.initState();
     _usernameFocusNode.addListener(() {
       setState(() {
-        //Redraw
       });
     });
     _passwordFocusNode.addListener(() {
       setState(() {
-        //Redraw
       });
     });
   }
@@ -67,10 +66,6 @@ class _SignupPageState extends State<SignupPage> {
               ],
             ),
             const SizedBox(height: 32.0),
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextFormField widgets (101)
             // [Name]
             TextFormField(
               controller: _usernameController,
@@ -98,11 +93,8 @@ class _SignupPageState extends State<SignupPage> {
               ),
               focusNode: _passwordFocusNode,
             ),
-            // TODO: Add button bar (101)
             ButtonBar(
-              // TODO: Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
-                // TODO: Add buttons (101)
                 TextButton(
                   child: const Text('cancel'),
                   style: ButtonStyle(
@@ -117,14 +109,11 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                   ),
                   onPressed: () {
-                    // TODO: Clear the text fields (101)
                     _usernameController.clear();
                     _passwordController.clear();
                     Navigator.pop(context);
                   },
                 ),
-                // TODO: Add an elevation to NEXT (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
                 ElevatedButton(
                   child: const Text('register'),
                   style: ButtonStyle(
@@ -148,10 +137,16 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  void signUp(String email, String password) async {
+  Future signUp(String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      var user = userCredential.user;
+      if(user != null){
+        await DatabaseService(uid: user.uid).updateUserData('signed up');
+        await DatabaseService(uid: user.uid).updateUserData('friends');
+        global.uid = user.uid;
+      }
       _usernameController.clear();
       _passwordController.clear();
       Navigator.pop(context);
@@ -167,5 +162,3 @@ class _SignupPageState extends State<SignupPage> {
     }
   }
 }
-
-// TODO: Add AccentColorOverride (103)

@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\flutter_unity_widget\\intermediates\\incremental\\mergeProfileResources\\merged.dir\\values-v28\\values-v28.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\unityLibrary\\intermediates\\packaged_res\\profile\\values-v28\\values-v28.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "8",
+                        "endOffsets": "229"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\flutter_unity_widget\\intermediates\\res\\merged\\profile\\values-v28\\values-v28.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\unityLibrary\\intermediates\\packaged_res\\profile\\values-v28\\values-v28.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "8",
+                        "endOffsets": "229"
+                    }
+                }
+            ]
+        }
+    ]
+}

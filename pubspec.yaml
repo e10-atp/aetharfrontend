@@ -1,4 +1,4 @@
-name: shrine
+name: aethar
 description: Learn the basics of using Material Components by building a simple app with core components.
 
 environment:
@@ -8,12 +8,13 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.17.0-nullsafety.2
-
+  flutter_unity_widget: ^2020.3.25
   cupertino_icons: ^1.0.3
   shrine_images: ^2.0.1
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.11
   provider: ^6.0.2
+  cloud_firestore: ^3.1.13
 
 dev_dependencies:
   flutter_test:
@@ -21,7 +22,6 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
-  # TODO: Insert Fonts (103)
   fonts:
     - family: Rubik
       fonts:
@@ -38,7 +38,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/text/about.txt
-    - assets/demo.jpg
     - assets/cube.png
     - assets/Category.friends/
     - assets/Category.rooms/

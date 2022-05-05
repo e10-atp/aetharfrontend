@@ -1,0 +1,22 @@
+aethar is a front-end for my startup studio project built using Flutter. It is an AR app which simulates space
+sharing and interaction as a means of immersive communication.
+
+All 3D AR interactions of this app will be built by our startup team and is not considered to be apart of
+this assignment. The AR interactions will be built in Unity with AR Foundation and scripted using C#.
+
+To keep the paradigms of our product design in line, I have chosen to work in Dart using Flutter. Flutter
+is cross platform (including iOS, Android, and web) and based on widgets, which allows rapid
+prototyping for user testing. It has been used as a UX wrapper for some commercial AR applications in
+the past. Flutter is a Google platform and has plugin in support for Firebase. Dart is an OOP
+language that is similar to C#, which can minimize any transition hitches my team might have when I
+hand the front-end off after submitting the milestones.
+
+Some features needed in the front end are:
+• An information/sign up public splash page
+• A log-in page
+• A sign-up page
+• A friend or circle management page
+• An inventory viewing or management page for owned 3D assets
+• An AR session management page which can launch the Unity portions of our application (not developed yet)
+
+Some requirements may change as we iterate over details of our service.
