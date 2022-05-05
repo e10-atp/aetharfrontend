@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:aethar/supplemental/asymmetric_view.dart';
 import 'model/products_repository.dart';
@@ -88,9 +86,9 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: const <Widget>[
                   Text('Title'),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: 8.0),
                   Text('Secondary Text'),
                 ],
               ),

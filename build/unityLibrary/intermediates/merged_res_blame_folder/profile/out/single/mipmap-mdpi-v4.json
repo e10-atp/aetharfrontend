@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\unityLibrary\\intermediates\\res\\merged\\profile\\mipmap-mdpi-v4\\ic_launcher_background.png",
+        "source": "C:\\Users\\nahte\\workspace\\aetharfrontend\\android\\unityLibrary\\src\\main\\res\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\unityLibrary\\intermediates\\res\\merged\\profile\\mipmap-mdpi-v4\\app_icon.png",
+        "source": "C:\\Users\\nahte\\workspace\\aetharfrontend\\android\\unityLibrary\\src\\main\\res\\mipmap-mdpi\\app_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\unityLibrary\\intermediates\\res\\merged\\profile\\mipmap-mdpi-v4\\ic_launcher_foreground.png",
+        "source": "C:\\Users\\nahte\\workspace\\aetharfrontend\\android\\unityLibrary\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    }
+]

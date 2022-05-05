@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'database.dart';
 import 'supplemental/cut_corners_border.dart';
 import 'colors.dart';
 import 'home.dart';
@@ -6,7 +7,7 @@ import 'login.dart';
 import 'backdrop.dart';
 import 'model/product.dart';
 import 'category_menu_page.dart';
-import 'artest.dart';
+import 'model/global.dart' as global;
 
 class AETHARApp extends StatefulWidget {
   const AETHARApp({Key? key}) : super(key: key);
@@ -19,7 +20,9 @@ class _AETHARAppState extends State<AETHARApp> {
   Category _currentCategory = Category.friends;
 
   void _onCategoryTap(Category category) {
+
     setState(() {
+      DatabaseService(uid: global.uid).updateUserData(category.name);
       _currentCategory = category;
     });
   }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:aethar/auth.dart';
+import 'database.dart';
 import 'login.dart';
 import 'model/product.dart';
 import 'auth.dart';
 import 'artest.dart';
 import 'colors.dart';
+import 'history.dart';
+import 'model/global.dart' as global;
 
 const double _kFlingVelocity = 2.0;
 
@@ -62,10 +65,11 @@ class _FrontLayer extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          DatabaseService(uid: global.uid).updateUserData('unity');
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => SimpleScreen()));
+                  builder: (BuildContext context) => const SimpleScreen()));
         },
         backgroundColor: aePurple100,
         child: const Icon(
@@ -73,7 +77,7 @@ class _FrontLayer extends StatelessWidget {
           color: aeBlack900,
         ),
       ),
-    ) ;
+    );
   }
 }
 
@@ -167,22 +171,36 @@ class _BackdropState extends State<Backdrop>
         backTitle: widget.backTitle,
       ),
       actions: <Widget>[
-        // TODO: Add shortcut to login screen from trailing icons (104)
         IconButton(
-          icon: Icon(
+          icon: const Icon(
+            Icons.history,
+            semanticLabel: 'history',
+          ),
+          onPressed: () {
+            DatabaseService(uid: global.uid).updateUserData('history');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const History()),
+            );
+          },
+        ),
+        IconButton(
+          icon: const Icon(
             Icons.logout,
             semanticLabel: 'logout',
           ),
           onPressed: () {
-            // TODO: Add open login (104)
+            DatabaseService(uid: global.uid).updateUserData('signed out');
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (BuildContext context) => const LoginPage()),
             );
+            global.uid = '';
             Auth().signOut();
           },
-        ),
+        )
       ],
     );
     return Scaffold(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 
 class SimpleScreen extends StatefulWidget {
-  SimpleScreen({Key? key}) : super(key: key);
+  const SimpleScreen({Key? key}) : super(key: key);
 
   @override
   _SimpleScreenState createState() => _SimpleScreenState();
@@ -31,7 +31,7 @@ class _SimpleScreenState extends State<SimpleScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Simple Screen'),
+        title: const Text('unity integration'),
       ),
       body: Card(
           margin: const EdgeInsets.all(8),
@@ -54,8 +54,8 @@ class _SimpleScreenState extends State<SimpleScreen> {
                   elevation: 10,
                   child: Column(
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 20),
                         child: Text("Rotation speed:"),
                       ),
                       Slider(

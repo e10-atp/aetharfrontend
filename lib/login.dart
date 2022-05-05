@@ -1,10 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:aethar/colors.dart';
 import 'package:aethar/signup.dart';
 import 'package:aethar/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'model/global.dart' as global;
+import 'database.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -120,9 +120,7 @@ class _LoginPageState extends State<LoginPage> {
               focusNode: _passwordFocusNode,
             ),
             ButtonBar(
-              // TODO: Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
-                // TODO: Add buttons (101)
                 TextButton(
                   child: const Text('sign up'),
                   style: ButtonStyle(
@@ -158,16 +156,16 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.all(Radius.circular(7.0))),
                     ),
                   ),
-                  // onPressed: () {
-                  //   String email = _usernameController.text;
-                  //   String password = _passwordController.text;
-                  //   login(email, password);
-                  // },
                   onPressed: () {
-                    _usernameController.clear();
-                    _passwordController.clear();
-                    Navigator.pop(context);
+                    String email = _usernameController.text;
+                    String password = _passwordController.text;
+                    login(email, password);
                   },
+                  // onPressed: () {
+                  //   _usernameController.clear();
+                  //   _passwordController.clear();
+                  //   Navigator.pop(context);
+                  // },
                 ),
               ],
             ),
@@ -181,6 +179,12 @@ class _LoginPageState extends State<LoginPage> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      var user = userCredential.user;
+      if(user != null){
+        await DatabaseService(uid: user.uid).updateUserData('signed in');
+        await DatabaseService(uid: user.uid).updateUserData('friends');
+        global.uid = user.uid;
+      }
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

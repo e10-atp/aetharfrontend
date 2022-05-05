@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\cloud_firestore\\intermediates\\res\\merged\\profile\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\nahte\\.gradle\\caches\\transforms-2\\files-2.1\\0b404e408bce66e246f82fbb880f1e55\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\cloud_firestore\\intermediates\\res\\merged\\profile\\color\\common_google_signin_btn_tint.xml",
+        "source": "C:\\Users\\nahte\\.gradle\\caches\\transforms-2\\files-2.1\\0b404e408bce66e246f82fbb880f1e55\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "C:\\Users\\nahte\\workspace\\aetharfrontend\\build\\cloud_firestore\\intermediates\\res\\merged\\profile\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\nahte\\.gradle\\caches\\transforms-2\\files-2.1\\0b404e408bce66e246f82fbb880f1e55\\jetified-play-services-base-18.0.1\\res\\color\\common_google_signin_btn_text_dark.xml"
+    }
+]

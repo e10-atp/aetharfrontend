@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "PACKAGED_MANIFESTS",
+    "kind": "Directory"
+  },
+  "applicationId": "com.xraph.plugin.flutter_unity_widget",
+  "variantName": "profile",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "outputFile": "../../merged_manifest/profile/AndroidManifest.xml"
+    }
+  ]
+}
