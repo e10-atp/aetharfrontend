@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:aethar/auth.dart';
 import 'database.dart';
 import 'login.dart';
+import 'addfriend.dart';
 import 'model/product.dart';
 import 'auth.dart';
 import 'artest.dart';
@@ -171,6 +172,20 @@ class _BackdropState extends State<Backdrop>
         backTitle: widget.backTitle,
       ),
       actions: <Widget>[
+        IconButton(
+          icon: const Icon(
+            Icons.add_box_outlined,
+            semanticLabel: 'add',
+          ),
+          onPressed: () {
+            DatabaseService(uid: global.uid).updateUserData('add');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => const AddFriend()),
+            );
+          },
+        ),
         IconButton(
           icon: const Icon(
             Icons.history,

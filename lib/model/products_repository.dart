@@ -13,20 +13,28 @@
 // limitations under the License.
 
 import 'product.dart';
+import 'global.dart' as global;
+import '../database.dart';
 
 class ProductsRepository {
-  static List<Product> loadProducts(Category category) {
-    const allProducts = <Product> [
+  static List<String> friendslist = [""];
+  static updateFriends() async{
+    friendslist = await DatabaseService(uid: global.uid).friendListFromSnapshot();
+  }
+  static List<Product> loadProducts(Category category){
+    final List<String> friends;
+    List<Product> allProducts;
+    allProducts = <Product> [
       Product(
         category: Category.friends,
         id: 0,
-        isFeatured: true,
+        isFeatured: false,
         name: 'Hoyoung Jung',
       ),
       Product(
         category: Category.friends,
         id: 1,
-        isFeatured: true,
+        isFeatured: false,
         name: 'Casey Pan',
       ),
       Product(
@@ -38,7 +46,7 @@ class ProductsRepository {
       Product(
         category: Category.friends,
         id: 3,
-        isFeatured: true,
+        isFeatured: false,
         name: 'Jeanne Li',
       ),
       Product(
@@ -50,13 +58,13 @@ class ProductsRepository {
       Product(
         category: Category.rooms,
         id: 5,
-        isFeatured: false,
+        isFeatured: true,
         name: 'Garden',
       ),
       Product(
         category: Category.rooms,
         id: 6,
-        isFeatured: false,
+        isFeatured: true,
         name: 'Court',
       ),
       Product(
@@ -78,11 +86,22 @@ class ProductsRepository {
         name: 'Basketball',
       ),
     ];
+
+    for (final element in allProducts){
+      if (friendslist.contains(element.name)){
+        print("true");
+        element.isFeatured = true;
+        print(element.isFeatured);
+      }
+    }
+
     if (category == Category.all) {
-      return allProducts;
+      return allProducts.where((Product p) {
+        return p.isFeatured == true;
+      }).toList();
     } else {
       return allProducts.where((Product p) {
-        return p.category == category;
+        return p.category == category && p.isFeatured == true; //(catetgory, bool)
       }).toList();
     }
   }

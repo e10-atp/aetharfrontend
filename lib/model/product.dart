@@ -15,7 +15,7 @@
 enum Category { all, friends, rooms, market, }
 
 class Product {
-  const Product({
+  Product({
     required this.category,
     required this.id,
     required this.isFeatured,
@@ -24,7 +24,7 @@ class Product {
 
   final Category category;
   final int id;
-  final bool isFeatured;
+  bool isFeatured;
   final String name;
 
   String get assetName => 'assets/$category/$id.jpg';

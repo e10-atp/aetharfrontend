@@ -27,6 +27,22 @@ class DatabaseService {
     }).toList();
   }
 
+  Future updateFriendList(String name) async {
+    //sets data
+    return await userpaths.doc(uid).collection('friends').add({
+      'user': name,
+    }).then((value) => print("Data Set"))
+        .catchError((error) => print("Failed to add Path: $error"));
+  }
+
+
+  Future friendListFromSnapshot() async {
+    var snapshot = await userpaths.doc(uid).collection('friends').get();
+    return snapshot.docs.map((doc){
+      return doc['user'] as String;
+    }).toList();
+  }
+
   Stream<List<userpath>> get paths {
     return userpaths.doc(uid).collection('history').orderBy('time', descending: true).snapshots().map(_pathListfromSnapshot);
   }

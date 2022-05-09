@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   // TODO: Make a collection of cards (102)
   List<Card> _buildGridCards(BuildContext context) {
+    ProductsRepository.updateFriends();
     List<Product> products = ProductsRepository.loadProducts(Category.all);
     if (products.isEmpty) {
       return const <Card>[];
